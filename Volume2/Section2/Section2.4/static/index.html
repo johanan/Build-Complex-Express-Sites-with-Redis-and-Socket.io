@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io Namespace</title
+</head>
+<body>
+  <h1>Socket.io Namespace</h1>
+  <button id="one">Namespace1</button>
+  <button id="two">Namespace2</button>
+  <ul id="list_one"></ul>
+  <ul id="list_two"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var one = io('/namespace1', {transports: ['websocket'], upgrade: false});
+    var two = io('/namespace2', {transports: ['websocket'], upgrade: false});
+
+    document.getElementById('one').addEventListener('click', (e) => {
+      one.emit('event', 'Hello from one');
+    });
+    document.getElementById('two').addEventListener('click', (e) => {
+      two.emit('event', 'Hello from two');
+    });
+
+    var addLi = (ul) => {
+      return (message) => {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(message));
+        document.getElementById(ul).appendChild(li);
+      };
+    };
+
+    one.on('event', addLi('list_one'));
+    two.on('event', addLi('list_two'));
+  </script>
+</body>
+</html>

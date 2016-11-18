@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io Rooms</title
+</head>
+<body>
+  <h1>Socket.io Rooms</h1>
+  <ul id="list"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io({transports: ['websocket'], upgrade: false});
+    var addLi = (message) => {
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(message));
+      document.getElementById('list').appendChild(li);
+    };
+    socket.on('event', addLi);
+  </script>
+</body>
+</html>

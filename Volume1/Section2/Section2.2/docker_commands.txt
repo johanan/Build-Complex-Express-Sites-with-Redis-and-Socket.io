@@ -1,0 +1,14 @@
+#start redis server
+docker run --name packt-redis -p 16379:6379 -d redis:3.2.4
+
+#stop or restart redis server
+docker stop packt-redis
+docker start packt-redis
+
+#remove redis
+docker rm packt-redis
+
+#connect redis-cli
+docker run -it --link packt-redis:redis --rm redis redis-cli -h redis -p 6379
+
+docker run -it --rm redis redis-cli --help

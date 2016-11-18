@@ -1,0 +1,60 @@
+set, get, incr
+set user:1 test
+get user:1
+
+set counter 1
+incr counter
+get counter
+
+exists user:1
+exists no
+
+#expire stuff
+expire user:1
+get user:1
+set test_key test EX 120
+#can use setex
+ttl test_key
+
+#hashes
+hset hash_key field value
+hsetnx hash_key field other
+hget hash_key field
+hsetnx hash_key new_field other
+hmset hash_key first 1 second 2
+hgetall hash_key
+hkeys hash_key
+
+#lists
+lpush dogs dexter
+lpush dogs gizmo
+lrange dogs 0 -1
+rpush dogs fido
+lpop dogs
+#lset and lrem, remember slow
+
+#sets
+sadd sdogs dexter
+sadd sdogs dexter
+sadd sdogs gizmo
+smembers sdogs
+sismember sdogs dexter
+sismember sdogs nothing
+srem sdogs dexter
+
+sadd sdogs dexter
+sadd dogs2 fido
+sadd dogs2 dexter
+
+sdiff sdogs dogs2
+sinter sdogs dogs2
+sunion sdogs dogs2
+
+#sorted:
+zadd zdogs 100 dexter
+zadd zdogs 200 gizmo
+zrange zdogs 0 -1
+zrange zdogs 0 -1 WITHSCORES
+zadd zdogs 300 dexter
+zrangebyscore zdogs 100 250
+#can zrevrange and zremrange same way

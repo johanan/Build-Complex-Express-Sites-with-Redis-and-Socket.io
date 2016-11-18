@@ -1,0 +1,6 @@
+subscribe user:events
+publish user:events 1
+
+subscribe user:events:area:1
+publish user:events:area:2 "new user"
+publish user:events:area:1 "new user"

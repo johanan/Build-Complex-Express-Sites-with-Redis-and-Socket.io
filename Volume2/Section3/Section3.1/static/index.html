@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io Authorization</title
+</head>
+<body>
+  <h1>Socket.io</h1>
+  <input type="text" id="name"/>
+  <button id="say_hello">Say Hello!</button>
+  <ul id="list"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io({transports: ['websocket'], upgrade: false});
+
+    document.getElementById('say_hello').addEventListener('click', (e) => {
+      socket.emit('name', document.getElementById('name').value);
+    });
+
+    var addLi = (message) => {
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(message));
+      document.getElementById('list').appendChild(li);
+    };
+    socket.on('event', addLi);
+    socket.on('name', (name) => {
+      document.getElementById('name').value = name;
+    });
+  </script>
+</body>
+</html>

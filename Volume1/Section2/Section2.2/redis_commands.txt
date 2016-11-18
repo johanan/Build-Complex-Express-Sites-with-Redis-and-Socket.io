@@ -1,0 +1,2 @@
+publish test "Is anyone there?"
+subscribe test

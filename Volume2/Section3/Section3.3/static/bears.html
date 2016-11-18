@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bears</title
+</head>
+<body>
+  <h1>Bears</h1>
+  <ul id="list"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io('/bears', {transports: ['websocket'], upgrade: false});
+    var addLi = (message) => {
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(message));
+      document.getElementById('list').appendChild(li);
+    };
+    socket.on('score', addLi);
+  </script>
+</body>
+</html>

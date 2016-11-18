@@ -1,0 +1,2 @@
+subscribe user:create
+psubscribe user:*

@@ -1,0 +1,25 @@
+#user hashes
+hmset user:1 username josh gender male
+hmset user:2 username chris gender female
+hmset user:3 username chris2 gender male
+
+#indexes to lookup
+set username:josh user:1
+set username:chris user:2
+set username:chris2 user:3
+
+#other lookups
+sadd names:josh user:1
+sadd names:chris user:2 user:3
+
+sadd gender:male user:1 user:3
+sadd gender:female user:2
+
+#intersection
+sinter names:chris gender:male
+
+#logins
+zadd logins 1476070170914 user:1
+zadd logins 1474774243814 user:2  #15 days ago
+zadd logins 1475638300131 user:3  #5 days ago
+zrangebyscore logins 1475465523408 1476070338922 

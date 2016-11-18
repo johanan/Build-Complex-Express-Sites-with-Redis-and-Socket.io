@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io</title
+</head>
+<body>
+  <h1>Socket.io</h1>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    //start it all off
+    socket.emit('socketping');
+    socket.on('socketpong', () => {
+      console.log('socketpong');
+      setTimeout(() => socket.emit('socketping'), 2000);
+    });
+
+  </script>
+</body>
+</html>

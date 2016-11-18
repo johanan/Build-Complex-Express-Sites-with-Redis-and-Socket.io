@@ -1,0 +1,27 @@
+#strings
+set user:1:username josh
+get user:1:username
+
+#hashes
+hmset user:1 first_name Joshua last_name Johanan
+hgetall user:1
+
+#lists
+lpush user:1:profile_views 5
+lpush user:1:profile_views 10
+lpush user:1:profile_views 15
+lpush user:1:profile_views 18
+lrange user:1:profile_views 0 -1
+lrange user:1:profile_views 0 2
+
+#sets
+Sadd post:1:users 1 2
+sadd post:1:users 1
+
+#sorted sets
+zadd logins 500 1
+zadd logins 600 15
+zadd logins 650 18
+
+zrange logins 0 -1
+zrevrange logins 0 -1
