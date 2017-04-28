@@ -1,4 +1,4 @@
-set, get, incr
+#set, get, incr
 set user:1 test
 get user:1
 
@@ -10,7 +10,7 @@ exists user:1
 exists no
 
 #expire stuff
-expire user:1
+expire user:1 1
 get user:1
 set test_key test EX 120
 #can use setex

@@ -18,9 +18,9 @@ var storeUser = (socketID, user) => {
 
 var getUser = (socketID) => {
   return new Promise((resolve, reject) => {
-    //client.get(socketID, promiser(resolve, reject));
+    client.get(socketID, promiser(resolve, reject));
     //test errors here
-    client.get(socketID, 12345, promiser(resolve, reject));
+    //client.get(socketID, 12345, promiser(resolve, reject));
   });
 };
 

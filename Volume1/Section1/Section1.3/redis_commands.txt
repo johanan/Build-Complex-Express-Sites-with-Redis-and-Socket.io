@@ -17,6 +17,7 @@ lrange user:1:profile_views 0 2
 #sets
 Sadd post:1:users 1 2
 sadd post:1:users 1
+smembers post:1:users
 
 #sorted sets
 zadd logins 500 1
@@ -24,4 +25,6 @@ zadd logins 600 15
 zadd logins 650 18
 
 zrange logins 0 -1
+zadd logins 550 20
+zrange logins 0 -1 WITHSCORES
 zrevrange logins 0 -1

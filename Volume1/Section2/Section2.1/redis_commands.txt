@@ -1,2 +1,6 @@
 subscribe user:create
 psubscribe user:*
+
+#NOTE the docker container may not respond to Ctrl+C
+#if this happens just close the terminal/console window
+#and rerun the docker command for redis-cli
